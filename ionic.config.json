@@ -1,0 +1,8 @@
+{
+  "name": "Coink",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "2505baf4"
+}
