@@ -1,0 +1,5 @@
+<ion-content [fullscreen]="true">
+  <app-step-one-form *ngIf="step === 1" (sendOneForm)="onSendFormStepOne($event)"></app-step-one-form>
+  <app-step-two-form *ngIf="step === 2" (sendTwoForm)="onSendFormStepTwo($event)"></app-step-two-form>
+  <app-step-three-form *ngIf="step === 3" (sendThreeForm)="onSendFormStepThree($event)"></app-step-three-form>
+</ion-content>

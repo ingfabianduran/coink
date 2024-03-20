@@ -1,0 +1,53 @@
+<form [formGroup]="formTwoStep" autocomplete="off">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-select label="Tipo de documento" label-placement="floating" fill="solid" formControlName="typeDocument">
+          <ion-select-option value="1">Tarjeta de identidad</ion-select-option>
+          <ion-select-option value="2">Cedula de ciudadania</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col size="12">
+        <ion-input type="number" fill="solid" label="Documento" labelPlacement="stacked"
+          placeholder="Número de documento" formControlName="document"></ion-input>
+      </ion-col>
+      <ion-col size="12">
+        <ion-input fill="solid" label="Fecha" labelPlacement="stacked" placeholder="Fecha de expedición del documento"
+          formControlName="expeditionDate"></ion-input>
+      </ion-col>
+      <ion-col size="12">
+        <ion-input fill="solid" label="Expedición" labelPlacement="stacked"
+          placeholder="Fecha de expedición del documento" formControlName="expeditionDate"></ion-input>
+      </ion-col>
+      <ion-col size="12">
+        <ion-input fill="solid" label="Nacimiento" labelPlacement="stacked" placeholder="Fecha de nacimiento"
+          formControlName="birthdate"></ion-input>
+      </ion-col>
+      <ion-col size="12">
+        <ion-select label="Genero" label-placement="floating" fill="solid" formControlName="gender">
+          <ion-select-option value="1">Masculino</ion-select-option>
+          <ion-select-option value="2">Femenino</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col size="12">
+        <ion-input type="email" fill="solid" label="Confirmar" labelPlacement="stacked" placeholder="Correo electronico"
+          formControlName="email"></ion-input>
+      </ion-col>
+      <ion-col size="12">
+        <ion-input type="email" fill="solid" label="Confirmar" labelPlacement="stacked"
+          placeholder="Confirmar correo electronico" formControlName="confirmEmail"></ion-input>
+      </ion-col>
+      <ion-col size="12">
+        <ion-input type="password" fill="solid" label="PIN" labelPlacement="stacked" placeholder="PIN de seguridad"
+          formControlName="securityPin"></ion-input>
+      </ion-col>
+      <ion-col size="12">
+        <ion-input type="password" fill="solid" label="Confirmar" labelPlacement="stacked"
+          placeholder="Confirmar PIN de seguridad" formControlName="confirmSecurityPin"></ion-input>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button (click)="onSubmitForm()">Siguiente</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
