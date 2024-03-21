@@ -4,7 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-step-two-form',
   templateUrl: './step-two-form.component.html',
-  styleUrls: ['./step-two-form.component.scss'],
+  styleUrls: ['./step-two-form.component.css'],
 })
 export class StepTwoFormComponent implements OnInit {
   @Output() sendTwoForm: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
@@ -24,6 +24,11 @@ export class StepTwoFormComponent implements OnInit {
 
   ngOnInit() { }
 
+  /**
+    * @author Fabian Duran
+    * @createdate 2024-03-20
+    * Metodo que envia los datos del formulario al componente padre.
+  */
   onSubmitForm(): void {
     if (this.formTwoStep.valid) this.sendTwoForm.emit(this.formTwoStep);
     else this.formTwoStep.markAllAsTouched();

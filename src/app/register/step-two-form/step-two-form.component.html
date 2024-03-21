@@ -6,47 +6,54 @@
           <ion-select-option value="1">Tarjeta de identidad</ion-select-option>
           <ion-select-option value="2">Cedula de ciudadania</ion-select-option>
         </ion-select>
+        <ion-text class="error-message" color="danger"
+          *ngIf="formTwoStep.get('typeDocument')?.invalid && formTwoStep.get('typeDocument')?.touched">
+          <ion-label>Por favor, selecciona un tipo de documento</ion-label>
+        </ion-text>
       </ion-col>
       <ion-col size="12">
         <ion-input type="number" fill="solid" label="Documento" labelPlacement="stacked"
-          placeholder="Número de documento" formControlName="document"></ion-input>
+          placeholder="Número de documento" formControlName="document"
+          errorText="Por favor, ingrese un número de documento válido"></ion-input>
       </ion-col>
       <ion-col size="12">
         <ion-input fill="solid" label="Fecha" labelPlacement="stacked" placeholder="Fecha de expedición del documento"
-          formControlName="expeditionDate"></ion-input>
-      </ion-col>
-      <ion-col size="12">
-        <ion-input fill="solid" label="Expedición" labelPlacement="stacked"
-          placeholder="Fecha de expedición del documento" formControlName="expeditionDate"></ion-input>
+          formControlName="expeditionDate" errorText="Por favor, ingrese una fecha de expedición válida"></ion-input>
       </ion-col>
       <ion-col size="12">
         <ion-input fill="solid" label="Nacimiento" labelPlacement="stacked" placeholder="Fecha de nacimiento"
-          formControlName="birthdate"></ion-input>
+          formControlName="birthdate" errorText="Por favor, ingrese una fecha de nacimiento válida"></ion-input>
       </ion-col>
       <ion-col size="12">
         <ion-select label="Genero" label-placement="floating" fill="solid" formControlName="gender">
           <ion-select-option value="1">Masculino</ion-select-option>
           <ion-select-option value="2">Femenino</ion-select-option>
         </ion-select>
+        <ion-text class="error-message" color="danger"
+          *ngIf="formTwoStep.get('gender')?.invalid && formTwoStep.get('gender')?.touched">
+          <ion-label>Por favor, selecciona un genero</ion-label>
+        </ion-text>
       </ion-col>
       <ion-col size="12">
-        <ion-input type="email" fill="solid" label="Confirmar" labelPlacement="stacked" placeholder="Correo electronico"
-          formControlName="email"></ion-input>
+        <ion-input type="email" fill="solid" label="Correo" labelPlacement="stacked" placeholder="Correo electronico"
+          formControlName="email" errorText="Por favor, ingrese correo electronico válido"></ion-input>
       </ion-col>
       <ion-col size="12">
         <ion-input type="email" fill="solid" label="Confirmar" labelPlacement="stacked"
-          placeholder="Confirmar correo electronico" formControlName="confirmEmail"></ion-input>
+          placeholder="Confirmar correo electronico" formControlName="confirmEmail"
+          errorText="Por favor, ingrese correo electronico válido"></ion-input>
       </ion-col>
       <ion-col size="12">
         <ion-input type="password" fill="solid" label="PIN" labelPlacement="stacked" placeholder="PIN de seguridad"
-          formControlName="securityPin"></ion-input>
+          formControlName="securityPin" errorText="Por favor, ingrese un PIN válido"></ion-input>
       </ion-col>
       <ion-col size="12">
         <ion-input type="password" fill="solid" label="Confirmar" labelPlacement="stacked"
-          placeholder="Confirmar PIN de seguridad" formControlName="confirmSecurityPin"></ion-input>
+          placeholder="Confirmar PIN de seguridad" formControlName="confirmSecurityPin"
+          errorText="Por favor, ingrese un PIN válido"></ion-input>
       </ion-col>
-      <ion-col size="6">
-        <ion-button (click)="onSubmitForm()">Siguiente</ion-button>
+      <ion-col size="12" style="display: flex; justify-content: center;">
+        <ion-button class="custom-button-primary" (click)="onSubmitForm()">Siguiente</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

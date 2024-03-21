@@ -1,0 +1,16 @@
+ion-content::part(background) {
+    background: #1EEA00;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.custom-img-size {
+    width: 156px;
+    height: 192px;
+    --object-fit: contain;
+}

@@ -1,0 +1,44 @@
+ion-content::part(background) {
+    background: #FFFFFF;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-buttons ion-button:last-child {
+    margin-bottom: 20px;
+}
+
+.custom-img-size {
+    width: 125px;
+    height: 154px;
+    --object-fit: contain;
+}
+
+.title-register {
+    font-size: 18px;
+    color: #1EEA00;
+    font-weight: 600;
+    text-align: center;
+}
+
+.container-buttons {
+    margin-bottom: var(--ion-safe-area-bottom, 0);
+}

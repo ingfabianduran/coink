@@ -1,0 +1,33 @@
+.custom-button-primary {
+    --background: #1EEA00;
+    --color: #004B40;
+    --background-hover: #1EEA00;
+    --border-radius: 40px;
+    font-weight: 600;
+    border-radius: 40px;
+    width: 326px;
+    height: 50px;
+}
+
+.custom-button-primary:hover {
+    background-color: #1EEA00 !important;
+    border-radius: 40px !important;
+    box-shadow: none !important;
+}
+
+.custom-button-secondary {
+    --background: #004B40;
+    --color: #FFFFFF;
+    --background-hover: #004B40;
+    --border-radius: 40px;
+    font-weight: 600;
+    border-radius: 40px;
+    width: 326px;
+    height: 50px;
+}
+
+.custom-button-secondary:hover {
+    background-color: #004B40 !important;
+    border-radius: 40px !important;
+    box-shadow: none !important;
+}

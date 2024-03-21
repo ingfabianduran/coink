@@ -3,10 +3,11 @@
     <ion-row>
       <ion-col size="12">
         <ion-input type="number" fill="solid" label="Celular" labelPlacement="stacked"
-          placeholder="Tú número de celular" formControlName="phone"></ion-input>
+          placeholder="Tú número de celular" formControlName="phone"
+          errorText="Por favor, ingrese un número de celular válido"></ion-input>
       </ion-col>
-      <ion-col size="6">
-        <ion-button (click)="onSubmitForm()">Siguiente</ion-button>
+      <ion-col size="12" style="display: flex; justify-content: center;">
+        <ion-button class="custom-button-primary" (click)="onSubmitForm()">Siguiente</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

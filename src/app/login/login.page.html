@@ -1,13 +1,12 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">login</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="container">
+    <div class="content">
+      <ion-img class="custom-img-size" src="assets/images/icon_coink_login.png" alt="Logo Coink"></ion-img>
+      <h4 class="title-register">LA ALCANCÍA QUE SIEMPRE TE ACOMPAÑA</h4>
+    </div>
+    <div class="footer-buttons">
+      <ion-button class="custom-button-primary" (click)="onClickRedirectPageRegister()">REGÍSTRATE</ion-button>
+      <ion-button class="custom-button-secondary">INGRESA</ion-button>
+    </div>
+  </div>
 </ion-content>
