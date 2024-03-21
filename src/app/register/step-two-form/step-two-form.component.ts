@@ -1,5 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { DocumentType, GenderType } from '../../interface/interfaces';
+import { RegisterService } from '../../services/register.service';
 
 @Component({
   selector: 'app-step-two-form',
@@ -8,6 +10,11 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class StepTwoFormComponent implements OnInit {
   @Output() sendTwoForm: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
+  typesDocument: DocumentType[] = [];
+  typesGender: GenderType[] = [
+    { id: 1, description: 'Femenino', notation: 'F' },
+    { id: 2, description: 'Masculino', notation: 'M' }
+  ];
   formTwoStep: FormGroup = new FormGroup({
     typeDocument: new FormControl('', [Validators.required]),
     document: new FormControl('', [Validators.required]),
@@ -20,10 +27,22 @@ export class StepTwoFormComponent implements OnInit {
     confirmSecurityPin: new FormControl('', [Validators.required]),
   });
 
-  constructor() { }
+  constructor(private registerService: RegisterService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.getTypesDocument();
+  }
 
+  /**
+    * @author Fabian Duran
+    * @createdate 2024-03-21
+    * Metodo que retorna los tipos de documento.
+  */
+  getTypesDocument(): void {
+    this.registerService.getTypesDocument().subscribe(res => {
+      this.typesDocument = res;
+    });
+  }
   /**
     * @author Fabian Duran
     * @createdate 2024-03-20

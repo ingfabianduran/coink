@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StepsForm } from '../interfaces/interfaces';
+import { StepsForm } from '../interface/interfaces';
 import { FormGroup } from '@angular/forms';
 
 @Component({

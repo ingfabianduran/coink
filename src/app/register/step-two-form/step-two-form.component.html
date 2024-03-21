@@ -3,8 +3,8 @@
     <ion-row>
       <ion-col size="12">
         <ion-select label="Tipo de documento" label-placement="floating" fill="solid" formControlName="typeDocument">
-          <ion-select-option value="1">Tarjeta de identidad</ion-select-option>
-          <ion-select-option value="2">Cedula de ciudadania</ion-select-option>
+          <ion-select-option *ngFor="let item of typesDocument" [value]="item.id">{{ item.description
+            }}</ion-select-option>
         </ion-select>
         <ion-text class="error-message" color="danger"
           *ngIf="formTwoStep.get('typeDocument')?.invalid && formTwoStep.get('typeDocument')?.touched">
@@ -26,8 +26,8 @@
       </ion-col>
       <ion-col size="12">
         <ion-select label="Genero" label-placement="floating" fill="solid" formControlName="gender">
-          <ion-select-option value="1">Masculino</ion-select-option>
-          <ion-select-option value="2">Femenino</ion-select-option>
+          <ion-select-option *ngFor="let item of typesGender" [value]="item.id">{{ item.description
+            }}</ion-select-option>
         </ion-select>
         <ion-text class="error-message" color="danger"
           *ngIf="formTwoStep.get('gender')?.invalid && formTwoStep.get('gender')?.touched">
