@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StepsForm } from '../interface/interfaces';
 import { FormGroup } from '@angular/forms';
+import { ToastService } from '../services/toast.service';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,7 @@ export class RegisterPage implements OnInit {
     stepThreeForm: null
   };
 
-  constructor() { }
+  constructor(private toastService: ToastService) { }
 
   ngOnInit() {
 
@@ -26,6 +27,7 @@ export class RegisterPage implements OnInit {
     * @author Fabian Duran
     * @createdate 2024-03-20
     * Metodo que setea el primer step del formulario padre.
+    * @param $event Evento emitido por el componente hijo.
   */
   onSendFormStepOne($event: FormGroup): void {
     this.step++;
@@ -35,6 +37,7 @@ export class RegisterPage implements OnInit {
     * @author Fabian Duran
     * @createdate 2024-03-20
     * Metodo que setea el segundo step del formulario padre.
+    * @param $event Evento emitido por el componente hijo.
   */
   onSendFormStepTwo($event: FormGroup): void {
     this.step++;
@@ -44,9 +47,10 @@ export class RegisterPage implements OnInit {
     * @author Fabian Duran
     * @createdate 2024-03-20
     * Metodo que setea el tercer step del formulario padre.
+    * @param $event Evento emitido por el componente hijo.
   */
   onSendFormStepThree($event: FormGroup): void {
-    this.step++;
     this.dataStepsForm.stepThreeForm = $event;
+    this.toastService.showToast({ message: 'El cliente se ha registrado' });
   }
 }
