@@ -1,5 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-step-three-form',
@@ -7,10 +7,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./step-three-form.component.css'],
 })
 export class StepThreeFormComponent implements OnInit {
-  @Output() sendThreeForm: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
-  formThreeStep: FormGroup = new FormGroup({
-    acceptContract: new FormControl(false, [Validators.required])
-  });
+  @Input() formThreeStep: FormGroup = new FormGroup({});
+  @Output() sendThreeForm: EventEmitter<void> = new EventEmitter<void>();
 
   constructor() { }
 
@@ -22,7 +20,7 @@ export class StepThreeFormComponent implements OnInit {
     * Metodo que envia los datos del formulario al componente padre.
   */
   onSubmitForm(): void {
-    if (this.formThreeStep.valid) this.sendThreeForm.emit(this.formThreeStep);
+    if (this.formThreeStep.valid) this.sendThreeForm.emit();
     else this.formThreeStep.markAllAsTouched();
   }
 }

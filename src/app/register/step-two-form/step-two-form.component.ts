@@ -1,7 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { DocumentType, GenderType } from '../../interface/interfaces';
 import { RegisterService } from '../../services/register.service';
+import { LoaderService } from '../../services/loader.service';
 
 @Component({
   selector: 'app-step-two-form',
@@ -9,25 +10,18 @@ import { RegisterService } from '../../services/register.service';
   styleUrls: ['./step-two-form.component.css'],
 })
 export class StepTwoFormComponent implements OnInit {
-  @Output() sendTwoForm: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
+  @Input() formTwoStep: FormGroup = new FormGroup({});
+  @Output() sendTwoForm: EventEmitter<void> = new EventEmitter<void>();
   typesDocument: DocumentType[] = [];
   typesGender: GenderType[] = [
     { id: 1, description: 'Femenino', notation: 'F' },
     { id: 2, description: 'Masculino', notation: 'M' }
   ];
-  formTwoStep: FormGroup = new FormGroup({
-    typeDocument: new FormControl('', [Validators.required]),
-    document: new FormControl('', [Validators.required]),
-    expeditionDate: new FormControl('', [Validators.required]),
-    birthdate: new FormControl('', [Validators.required]),
-    gender: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    confirmEmail: new FormControl('', [Validators.required, Validators.email]),
-    securityPin: new FormControl('', [Validators.required]),
-    confirmSecurityPin: new FormControl('', [Validators.required]),
-  });
 
-  constructor(private registerService: RegisterService) { }
+  constructor(
+    private registerService: RegisterService,
+    private loaderService: LoaderService
+  ) { }
 
   ngOnInit() {
     this.getTypesDocument();
@@ -38,9 +32,11 @@ export class StepTwoFormComponent implements OnInit {
     * @createdate 2024-03-21
     * Metodo que retorna los tipos de documento.
   */
-  getTypesDocument(): void {
+  async getTypesDocument(): Promise<void> {
+    const loader = await this.loaderService.showLoader({ message: 'Cargando...' });
     this.registerService.getTypesDocument().subscribe(res => {
       this.typesDocument = res;
+      setTimeout(() => { this.loaderService.hideLoader(loader); }, 3000);
     });
   }
   /**
@@ -49,7 +45,7 @@ export class StepTwoFormComponent implements OnInit {
     * Metodo que envia los datos del formulario al componente padre.
   */
   onSubmitForm(): void {
-    if (this.formTwoStep.valid) this.sendTwoForm.emit(this.formTwoStep);
+    if (this.formTwoStep.valid) this.sendTwoForm.emit();
     else this.formTwoStep.markAllAsTouched();
   }
 }

@@ -4,7 +4,10 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
-  <app-step-one-form *ngIf="step === 1" (sendOneForm)="onSendFormStepOne($event)"></app-step-one-form>
-  <app-step-two-form *ngIf="step === 2" (sendTwoForm)="onSendFormStepTwo($event)"></app-step-two-form>
-  <app-step-three-form *ngIf="step === 3" (sendThreeForm)="onSendFormStepThree($event)"></app-step-three-form>
+  <app-step-one-form *ngIf="step === 1" [formOneStep]="dataStepsForm.stepOneForm"
+    (sendOneForm)="onSendFormStepOne()"></app-step-one-form>
+  <app-step-two-form *ngIf="step === 2" [formTwoStep]="dataStepsForm.stepTwoForm"
+    (sendTwoForm)="onSendFormStepTwo()"></app-step-two-form>
+  <app-step-three-form *ngIf="step === 3" [formThreeStep]="dataStepsForm.stepThreeForm"
+    (sendThreeForm)="onSendFormStepThree()"></app-step-three-form>
 </ion-content>

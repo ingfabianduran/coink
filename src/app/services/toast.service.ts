@@ -13,13 +13,15 @@ export class ToastService {
     * @createdate 2024-03-21
     * Metodo que muestra el toast.
     * @param message Mensaje a mostrar.
+    * @param color Color de la notificacion.
   */
-  async showToast({ message = 'Registro creado', color = 'success' }) {
+  async showToast({ message = 'Registro creado', color = 'success' }): Promise<HTMLIonToastElement> {
     const toast = await this.toastController.create({
       message: message,
       duration: 3000,
       color: color
     });
-    await toast.present();
+    toast.present();
+    return toast;
   }
 }
