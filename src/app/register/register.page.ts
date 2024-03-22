@@ -11,7 +11,7 @@ import { ModalSuccessComponent } from './modal-success/modal-success.component';
   styleUrls: ['./register.page.css'],
 })
 export class RegisterPage implements OnInit {
-  step: number = 3;
+  step: number = 1;
   nameStep: string[] = ['NÚMERO CELULAR', 'DATOS DE CUENTA', 'FINALIZAR'];
   dataStepsForm: StepsForm = {
     stepOneForm: new FormGroup({
@@ -42,6 +42,9 @@ export class RegisterPage implements OnInit {
 
   }
 
+  onClickButtonBack(): void {
+    this.step--;
+  }
   /**
     * @author Fabian Duran
     * @createdate 2024-03-20

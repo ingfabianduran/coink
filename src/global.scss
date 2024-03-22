@@ -24,4 +24,10 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+@import "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap";
 
+
+html {
+    --ion-dynamic-font: var(--ion-default-dynamic-font);
+    --ion-font-family: "Montserrat", sans-serif !important;;
+}

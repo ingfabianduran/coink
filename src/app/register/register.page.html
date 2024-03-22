@@ -1,5 +1,10 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons *ngIf="step >= 2" slot="start">
+      <ion-button (click)="onClickButtonBack()">
+        <ion-icon slot="icon-only" name="chevron-back-outline" class="custom-button-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>{{ nameStep[step - 1] }}</ion-title>
   </ion-toolbar>
 </ion-header>
