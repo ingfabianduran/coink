@@ -1,0 +1,41 @@
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 20px;
+}
+
+.custom-img {
+    width: 100px;
+}
+
+.custom-title,
+.custom-text {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.custom-button-primary {
+    margin-top: 20px;
+}
+
+.custom-img {
+    width: 100px;
+    height: 80px;
+    --object-fit: contain;
+}
+
+.custom-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #004B40;
+    text-align: center;
+}
+
+.custom-text {
+    font-size: 16px;
+    color: #212121;
+    text-align: center;
+}

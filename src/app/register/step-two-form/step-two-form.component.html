@@ -1,6 +1,18 @@
-<form [formGroup]="formTwoStep" autocomplete="off">
+<form [formGroup]="formTwoStep" autocomplete="off" class="ion-padding">
   <ion-grid>
+    <ion-row class="ion-align-items-center ion-justify-content-center">
+      <ion-col size="3">
+        <ion-img class="custom-img" src="assets/images/oink-step-1-2.png" alt="Logo Coink"></ion-img>
+      </ion-col>
+      <ion-col size="9">
+        <ion-text>
+          <p class="header-title">¿CUÁLES SON TUS DATOS?</p>
+          <p class="header-description">Ahora necesitamos saber algunos datos tuyos</p>
+        </ion-text>
+      </ion-col>
+    </ion-row>
     <ion-row>
+      <p class="header-title">Documento de identidad</p>
       <ion-col size="12">
         <ion-select label="Tipo de documento" label-placement="floating" fill="solid" formControlName="typeDocument">
           <ion-select-option *ngFor="let item of typesDocument" [value]="item.id">{{ item.description
@@ -34,6 +46,7 @@
           <ion-label>Por favor, selecciona un genero</ion-label>
         </ion-text>
       </ion-col>
+      <p class="header-title">Configura tu cuenta</p>
       <ion-col size="12">
         <ion-input type="email" fill="solid" label="Correo" labelPlacement="stacked" placeholder="Correo electronico"
           formControlName="email" errorText="Por favor, ingrese correo electronico válido"></ion-input>

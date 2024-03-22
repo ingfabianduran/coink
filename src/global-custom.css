@@ -31,3 +31,17 @@
     border-radius: 40px !important;
     box-shadow: none !important;
 }
+
+.custom-modal {
+    --width: fit-content;
+    --min-width: 250px;
+    --height: fit-content;
+    --border-radius: 6px;
+    --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.custom-modal .wrapper {
+    margin-bottom: 10px;
+}

@@ -7,6 +7,7 @@ import { RegisterPage } from './register.page';
 import { StepOneFormComponent } from './step-one-form/step-one-form.component';
 import { StepTwoFormComponent } from './step-two-form/step-two-form.component';
 import { StepThreeFormComponent } from './step-three-form/step-three-form.component';
+import { ModalSuccessComponent } from './modal-success/modal-success.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { StepThreeFormComponent } from './step-three-form/step-three-form.compon
     RegisterPage,
     StepOneFormComponent,
     StepTwoFormComponent,
-    StepThreeFormComponent
+    StepThreeFormComponent,
+    ModalSuccessComponent
   ]
 })
 export class RegisterPageModule { }

@@ -1,0 +1,14 @@
+.custom-img {
+    width: 64px;
+    height: 64px;
+    --object-fit: contain;
+}
+
+.custom-text {
+    font-size: 14px;
+    color: #757575;
+}
+
+.custom-text-phone {
+    font-weight: 700;
+}

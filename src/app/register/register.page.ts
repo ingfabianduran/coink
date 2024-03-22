@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { StepsForm } from '../interface/interfaces';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ToastService } from '../services/toast.service';
-import { Router } from '@angular/router';
 import { LoaderService } from '../services/loader.service';
+import { ModalController } from '@ionic/angular';
+import { ModalSuccessComponent } from './modal-success/modal-success.component';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +11,7 @@ import { LoaderService } from '../services/loader.service';
   styleUrls: ['./register.page.css'],
 })
 export class RegisterPage implements OnInit {
-  step: number = 1;
+  step: number = 3;
   nameStep: string[] = ['NÚMERO CELULAR', 'DATOS DE CUENTA', 'FINALIZAR'];
   dataStepsForm: StepsForm = {
     stepOneForm: new FormGroup({
@@ -34,9 +34,8 @@ export class RegisterPage implements OnInit {
   };
 
   constructor(
-    private toastService: ToastService,
-    private router: Router,
-    private loaderService: LoaderService
+    private loaderService: LoaderService,
+    private modalController: ModalController
   ) { }
 
   ngOnInit() {
@@ -70,12 +69,12 @@ export class RegisterPage implements OnInit {
   async onSendFormStepThree(): Promise<void> {
     const loader = await this.loaderService.showLoader({ message: 'Por favor espere...' });
     setTimeout(async () => {
-      const toast = await this.toastService.showToast({ message: 'El cliente se ha registrado' });
       this.loaderService.hideLoader(loader);
-      console.log('Información del cliente', this.dataStepsForm);
-      toast.onDidDismiss().then(() => {
-        this.router.navigate(['login']);
+      const modal = await this.modalController.create({
+        component: ModalSuccessComponent,
+        cssClass: 'custom-modal'
       });
+      modal.present();
     }, 3000);
   }
 }

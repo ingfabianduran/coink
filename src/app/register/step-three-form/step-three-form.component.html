@@ -1,8 +1,31 @@
 <form [formGroup]="formThreeStep" autocomplete="off">
   <ion-grid>
+    <ion-row class="ion-align-items-center ion-justify-content-center">
+      <ion-col size="3">
+        <ion-img class="custom-img" src="assets/images/oink-step-3.png" alt="Logo Coink"></ion-img>
+      </ion-col>
+      <ion-col size="9">
+        <ion-text>
+          <p class="header-title">ESTAS MUY CERCA DE SER PARTE DE COINK.</p>
+          <p class="header-description">Solo es necesario que leas detenidamente el contrato que se encuentra al final
+            de esta pantalla y lo aceptes.</p>
+        </ion-text>
+      </ion-col>
+    </ion-row>
     <ion-row>
+      <p class="header-title">LO MÁS IMPORTANTE</p>
+      <p class="header-description">Para la apertura del Depósito de Bajo Monto en COINK debes ser una persona natural
+        que de acuerdo con nuestra legislación vigente te encuentres en plena capacidad para adquirir derechos y
+        contraer obligaciones. Abrirás una cuenta COINK de Bajo Monto la cual te permitirá tener un saldo hasta por 8
+        salarios mínimos en el mes y realizar débitos por el mismo valor. Si deseas sobrepasar estos límites debes
+        solicitarnos la apertura de un Depósito Ordinario COINK Persona Natural. Solo puedes tener una cuenta COINK de
+        Bajo Monto y podrás utilizar tu dispositivo móvil para consultar tu saldo, tus movimientos, realizar tus
+        transacciones y administrar tu cuenta. Recuerda que no necesitas saldo mínimo ni monto inicial para su apertura.
+      </p>
+      <p class="text-read-contact">Lee tu contrato</p>
       <ion-col size="12">
-        <ion-checkbox formControlName="acceptContract">He leído ya acepto el contrato</ion-checkbox>
+        <ion-checkbox formControlName="acceptContract"><span class="text-checkbox">He leído ya acepto el
+            contrato</span></ion-checkbox>
       </ion-col>
       <ion-col size="12" style="display: flex; justify-content: center;">
         <ion-button class="custom-button-primary" (click)="onSubmitForm()">Siguiente</ion-button>

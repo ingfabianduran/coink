@@ -3,7 +3,7 @@
     <ion-title>{{ nameStep[step - 1] }}</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding">
   <app-step-one-form *ngIf="step === 1" [formOneStep]="dataStepsForm.stepOneForm"
     (sendOneForm)="onSendFormStepOne()"></app-step-one-form>
   <app-step-two-form *ngIf="step === 2" [formTwoStep]="dataStepsForm.stepTwoForm"
