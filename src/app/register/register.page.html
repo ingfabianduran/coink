@@ -5,7 +5,10 @@
         <ion-icon slot="icon-only" name="chevron-back-outline" class="custom-button-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>{{ nameStep[step - 1] }}</ion-title>
+    <div class="toolbar-content">
+      <ion-title class="custom-title">{{ nameStep[step - 1] }}</ion-title>
+      <ion-img class="custom-img" [src]="nameImgStep[step - 1]" alt="Step image"></ion-img>
+    </div>
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true" class="ion-padding">

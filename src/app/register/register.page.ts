@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class RegisterPage implements OnInit {
   step: number = 3;
   nameStep: string[] = ['NÚMERO CELULAR', 'DATOS DE CUENTA', 'FINALIZAR'];
+  nameImgStep: string[] = ['assets/images/step_1.png', 'assets/images/step_2.png', 'assets/images/step_3.png'];
   dataStepsForm: StepsForm = {
     stepOneForm: new FormGroup({
       phone: new FormControl('', [Validators.required])
@@ -82,6 +83,7 @@ export class RegisterPage implements OnInit {
   async onSendFormStepThree(): Promise<void> {
     const loader = await this.loaderService.showLoader({ message: 'Por favor espere...' });
     setTimeout(async () => {
+      console.log('Informacion del formulario', this.dataStepsForm);
       this.loaderService.hideLoader(loader);
       const modal = await this.modalController.create({
         component: ModalSuccessComponent,

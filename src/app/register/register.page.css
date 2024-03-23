@@ -1,11 +1,23 @@
-ion-title {
-    width: 100%;
-    display: flex !important;
-    justify-content: center !important;
+.toolbar-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex: 1;
+}
+
+.custom-title {
     text-align: center !important;
     font-size: 16px !important;
     font-weight: 600;
     color: #004B40;
+    margin-bottom: 5px;
+}
+
+.custom-img {
+    width: 188px;
+    height: 18px;
+    --object-fit: contain;
 }
 
 .custom-button-back {
