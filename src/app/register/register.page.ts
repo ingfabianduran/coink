@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.page.css'],
 })
 export class RegisterPage implements OnInit {
-  step: number = 3;
+  step: number = 1;
   nameStep: string[] = ['NÚMERO CELULAR', 'DATOS DE CUENTA', 'FINALIZAR'];
   nameImgStep: string[] = ['assets/images/step_1.png', 'assets/images/step_2.png', 'assets/images/step_3.png'];
   dataStepsForm: StepsForm = {
@@ -22,8 +22,8 @@ export class RegisterPage implements OnInit {
     stepTwoForm: new FormGroup({
       typeDocument: new FormControl('', [Validators.required]),
       document: new FormControl('', [Validators.required]),
-      expeditionDate: new FormControl('', [Validators.required]),
-      birthdate: new FormControl('', [Validators.required]),
+      expeditionDate: new FormControl('00/00/0000', [Validators.required]),
+      birthdate: new FormControl('00/00/0000', [Validators.required]),
       gender: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
       confirmEmail: new FormControl('', [Validators.required, Validators.email]),
