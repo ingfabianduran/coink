@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { StepsForm } from '../interface/interfaces';
 import { FormGroup, FormControl, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
-import { LoaderService } from '../services/loader.service';
 import { ModalController } from '@ionic/angular';
 import { ModalSuccessComponent } from './modal-success/modal-success.component';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-register',
@@ -36,9 +36,9 @@ export class RegisterPage implements OnInit {
   };
 
   constructor(
-    private loaderService: LoaderService,
     private modalController: ModalController,
-    private router: Router
+    private router: Router,
+    private ngxSpinnerService: NgxSpinnerService
   ) { }
 
   ngOnInit() {
@@ -80,16 +80,16 @@ export class RegisterPage implements OnInit {
     * @createdate 2024-03-20
     * Metodo que setea el tercer step del formulario padre.
   */
-  async onSendFormStepThree(): Promise<void> {
-    const loader = await this.loaderService.showLoader({ message: 'Por favor espere...' });
+  onSendFormStepThree(): void {
+    this.ngxSpinnerService.show();
     setTimeout(async () => {
       console.log('Informacion del formulario', this.dataStepsForm);
-      this.loaderService.hideLoader(loader);
       const modal = await this.modalController.create({
         component: ModalSuccessComponent,
         cssClass: 'custom-modal'
       });
       modal.present();
+      this.ngxSpinnerService.hide();
     }, 3000);
   }
   /**

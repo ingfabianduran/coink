@@ -34,7 +34,9 @@
             "styles": [
               "src/global.scss", 
               "src/theme/variables.scss",
-              "src/global-custom.css"
+              "src/global-custom.css",
+              "./node_modules/ngx-spinner/animations/timer.css",
+              "./node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []
           },

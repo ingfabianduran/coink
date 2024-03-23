@@ -2,7 +2,6 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { DocumentType, GenderType } from '../../interface/interfaces';
 import { RegisterService } from '../../services/register.service';
-import { LoaderService } from '../../services/loader.service';
 
 @Component({
   selector: 'app-step-two-form',
@@ -20,7 +19,6 @@ export class StepTwoFormComponent implements OnInit {
 
   constructor(
     private registerService: RegisterService,
-    private loaderService: LoaderService
   ) { }
 
   ngOnInit() {
@@ -32,11 +30,9 @@ export class StepTwoFormComponent implements OnInit {
     * @createdate 2024-03-21
     * Metodo que retorna los tipos de documento.
   */
-  async getTypesDocument(): Promise<void> {
-    const loader = await this.loaderService.showLoader({ message: 'Cargando...' });
+  getTypesDocument(): void {
     this.registerService.getTypesDocument().subscribe(res => {
       this.typesDocument = res;
-      setTimeout(() => { this.loaderService.hideLoader(loader); }, 3000);
     });
   }
   /**
