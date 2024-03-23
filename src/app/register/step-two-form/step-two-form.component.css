@@ -18,3 +18,8 @@
 .error-message ion-label {
     font-size: 12px;
 }
+
+ion-item-divider.custom-divider {
+    border-color: #1EEB00;
+    margin-bottom: 20px;
+}

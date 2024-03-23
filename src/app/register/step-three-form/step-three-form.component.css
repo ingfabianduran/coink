@@ -26,3 +26,8 @@
     font-size: 14px;
     color: #004B40;
 }
+
+ion-item-divider.custom-divider {
+    border-color: #1EEB00;
+    margin-bottom: 20px;
+}

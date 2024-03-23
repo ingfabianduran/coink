@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { StepsForm } from '../interface/interfaces';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 import { LoaderService } from '../services/loader.service';
 import { ModalController } from '@ionic/angular';
 import { ModalSuccessComponent } from './modal-success/modal-success.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +12,7 @@ import { ModalSuccessComponent } from './modal-success/modal-success.component';
   styleUrls: ['./register.page.css'],
 })
 export class RegisterPage implements OnInit {
-  step: number = 1;
+  step: number = 3;
   nameStep: string[] = ['NÚMERO CELULAR', 'DATOS DE CUENTA', 'FINALIZAR'];
   dataStepsForm: StepsForm = {
     stepOneForm: new FormGroup({
@@ -35,21 +36,32 @@ export class RegisterPage implements OnInit {
 
   constructor(
     private loaderService: LoaderService,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private router: Router
   ) { }
 
   ngOnInit() {
-
+    this.dataStepsForm.stepTwoForm.get('confirmEmail')?.setValidators([Validators.required, Validators.email, this.matchValidator('email')]);
+    this.dataStepsForm.stepTwoForm.get('confirmSecurityPin')?.setValidators([Validators.required, this.matchValidator('securityPin')]);
+    this.dataStepsForm.stepTwoForm.get('confirmEmail')?.updateValueAndValidity();
+    this.dataStepsForm.stepTwoForm.get('confirmSecurityPin')?.updateValueAndValidity();
   }
 
+  /**
+    * @author Fabian Duran
+    * @createdate 2024-03-22
+    * Metodo que resta el valor del step y si esta en 1 entonces redirecciona al login.
+  */
   onClickButtonBack(): void {
-    this.step--;
+    let tempStep = this.step;
+    tempStep--;
+    this.step = tempStep === 0 ? 1 : tempStep;
+    if (tempStep === 0) this.router.navigate(['login']);
   }
   /**
     * @author Fabian Duran
     * @createdate 2024-03-20
     * Metodo que setea el primer step del formulario padre.
-    * @param $event Evento emitido por el componente hijo.
   */
   onSendFormStepOne(): void {
     this.step++;
@@ -58,7 +70,6 @@ export class RegisterPage implements OnInit {
     * @author Fabian Duran
     * @createdate 2024-03-20
     * Metodo que setea el segundo step del formulario padre.
-    * @param $event Evento emitido por el componente hijo.
   */
   onSendFormStepTwo(): void {
     this.step++;
@@ -67,7 +78,6 @@ export class RegisterPage implements OnInit {
     * @author Fabian Duran
     * @createdate 2024-03-20
     * Metodo que setea el tercer step del formulario padre.
-    * @param $event Evento emitido por el componente hijo.
   */
   async onSendFormStepThree(): Promise<void> {
     const loader = await this.loaderService.showLoader({ message: 'Por favor espere...' });
@@ -79,5 +89,21 @@ export class RegisterPage implements OnInit {
       });
       modal.present();
     }, 3000);
+  }
+  /**
+    * @author Fabian Duran
+    * @createdate 2024-03-22
+    * Validacion personalizada que compara si dos campos son iguales.
+    * @param matchTo Campo a comparar.
+  */
+  matchValidator(matchTo: string): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: boolean } | null => {
+      const field = this.dataStepsForm.stepTwoForm.get(matchTo)?.value;
+      const fieldToCompare = control.value;
+      if (!fieldToCompare || !field) return null;
+      if (field !== fieldToCompare) return { matchValidator: true };
+      if (field === fieldToCompare) return null;
+      return null;
+    };
   }
 }
